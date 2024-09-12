@@ -1,0 +1,76 @@
+After creating our desired Lambda Funcitons we now have to create a bot through AWS that we can train using our funciton.
+So going through 
+
+In AWS in the LEX console, I chose create and applied the following configs
+
+
+    Bot name: PizzaOrderingBot
+
+    Language: Choose the language and locale for your bot.
+
+    Output voice: Salli
+
+    Session timeout : 5 minutes.
+
+    COPPA: Choose the appropriate response.
+
+    User utterance storage: Choose the appropriate response.
+
+
+I now had to create intent, which I named OrderPizza
+
+After creating intent I created Slot Types with the following configs
+
+
+    Slot type name – Crusts
+
+    Description – Available crusts
+
+    Choose Restrict to Slot values and Synonyms
+
+    Value – Thick
+
+    Synonyms - stuffed
+
+Added slot to intent
+
+Changed the name of the slot from slotOne to crust. Change the prompt to What kind of crust would you like?
+
+Repeated previous steps for the following configurations
+
+    Name - Sizes  ,  PizzaKinda
+
+    Description - Available sizes  ,  Available Pizzas
+
+    Values - Small, Medium, Large  ,  veg, cheese
+
+    Slot name - size  ,  pizzaKind
+
+    Prompt - What size Pizza?  ,  Do you want a veg or cheese pizza?
+
+I then configured the Intent of OrderPizza to fullfill a user's request to order a pizza. Added the following strings as sample Utterances
+
+
+    I want to order pizza please
+
+    I want to order a pizza
+
+    I want to order a {pizzaKind} pizza
+
+    I want to order a {size} {pizzaKind} pizza
+
+    I want a {size} {crust} crust {pizzaKind} pizza
+
+    Can I get a pizza please
+
+    Can I get a {pizzaKind} pizza
+
+    Can I get a {size} {pizzaKind} pizza
+
+Lambda initialization and validation – left as default.
+
+Confirmation prompt – left as default.
+
+Fulfillment: In the fulfillment tab I told the bot to choose the Lambda funciton (PizzaOrderProcessor) as for what it has to fulfill
+Did some final configurations to the bot
+
